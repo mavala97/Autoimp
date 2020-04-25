@@ -17,7 +17,7 @@
 <ul>
 <li>Acceptance criteria:
 <ul>
-<li>The name of the project should be given as an argument</li>
+<li>The name of the project should be given as an argumenttt</li>
 </ul>
 </li>
 </ul>
