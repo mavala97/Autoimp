@@ -66,6 +66,7 @@ def organise(files):
     if not files:
         print("no files to import")
         return []
+
     year = creation_date(files[0][0]).year
     projectName = getName()
 
