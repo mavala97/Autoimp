@@ -1,9 +1,0 @@
--Find the relevant files (Audio, video, pictures)
--Format the relevant volume
--Organise the files
-    -Based on date
-    -Based on a project name
-    -Based on the type of file
--Program needs to get the project name as a parameter
--How does the program perform
-    -
