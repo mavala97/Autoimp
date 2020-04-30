@@ -5,8 +5,8 @@ import shutil
 
 ROOT_PATHS = ["/Volumes/SD64GB01","/Volumes/SD64GB02","/Volumes/MICR16GB01","/Volumes/GOPROSD16"]
 PROJECT_FOLDER = "/Volumes/Samsung T5/Video/Projects"
-EXTENSION_LIST = [".CR2", ".WAV", ".MP4", ".JPG"]
-TYPE_LIST = ["Photo", "Audio", "Video", "Photo"]
+EXTENSION_LIST = [".CR2", ".WAV", ".MP4", ".JPG", ".mp4"]
+TYPE_LIST = ["Photo", "Audio", "Video", "Photo", "Screen"]
 PROJECT_NAME = "newProject"
 
 
@@ -20,6 +20,8 @@ def getName():
 
 
 def fileFinder(rootPath, extensionList):
+    if rootPath == None:
+        return None
     filePaths = []
     for r, d, f in os.walk(rootPath):
         for file in f:
@@ -46,8 +48,19 @@ def createFileObjects(path):
 
 
 def createFileList():
+    screenRootPath = "/Users/maxvanlaarhoven/Documents/Screenshots/Export/"
     rootPath = findRootpath()
-    filePaths = fileFinder(rootPath, EXTENSION_LIST)
+    screenFiles = fileFinder(screenRootPath, ['.mp4'])
+    volumeFiles = fileFinder(rootPath, EXTENSION_LIST)
+    if screenFiles == None:
+        filePaths = volumeFiles
+    elif volumeFiles == None:
+        filePaths = screenFiles
+    else:
+        filePaths = volumeFiles+screenFiles
+
+    print(filePaths)
+
     files = []
     for path in filePaths:
         file = createFileObjects(path)
@@ -86,5 +99,4 @@ def organise(files):
             shutil.move(f[0], PROJECT_FOLDER + "/" + str(year) + "/" + str(projectName) + "/" + f[-2] +"/" + f[0].split('/')[-1])
 
 
-l = createFileList()
-organise(l)
+
