@@ -6,4 +6,4 @@
 
 - As a user `I want` to register a project name `so that I` can easily find them later   
   - Acceptance criteria:   
-    - The name of the project should be given as an argumenttt
+    - The name of the project should be given as an argument
